@@ -15,13 +15,30 @@ namespace TopDownRace
         {
 
         }
+
+        public void SetTarget(Transform newTarget)
+        {
+            if (newTarget == null)
+            {
+                m_Target = transform;
+                m_Target.position = Vector3.zero;
+            }
+            else
+            {
+                m_Target = newTarget;
+            }
+        }
+
         void FixedUpdate()
         {
-            m_Target = PlayerCar.m_Current.transform;
+            if (PlayerCar.m_Current != null)
+            {
+                m_Target = PlayerCar.m_Current.transform;
 
-            Vector3 targetPosition = m_Target.position + m_Offset;
-            Vector3 forwardOffset = 20.0f * (m_Target.rotation * Vector3.right);
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition + forwardOffset, ref m_Velocity, m_SmoothTime);
+                Vector3 targetPosition = m_Target.position + m_Offset;
+                Vector3 forwardOffset = 20.0f * (m_Target.rotation * Vector3.right);
+                transform.position = Vector3.SmoothDamp(transform.position, targetPosition + forwardOffset, ref m_Velocity, m_SmoothTime);
+            }
         }
     }
 }

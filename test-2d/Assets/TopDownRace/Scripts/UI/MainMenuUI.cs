@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TopDownRace.ScriptableObjects;
+using System.Threading.Tasks;
 namespace TopDownRace
 {
     public class MainMenuUI : MonoBehaviour
@@ -29,22 +30,30 @@ namespace TopDownRace
             Application.Quit();
         }
 
-        public void BtnLevel(int num)
+        public async void BtnLevel(int num)
         {
             m_GameplayData.LevelNumber = num;
-            switch (num)
+			await SceneLoader.Instance.UnloadScene("MainMenu");
+			switch (num)
             {
                 case 0:
-                    SceneManager.LoadScene("Forest");
-                    break;
+					await SceneLoader.Instance.LoadSceneAdditive("Forest");
+					await SceneLoader.Instance.LoadSceneAdditive("Audio");
+					await SceneLoader.Instance.LoadSceneAdditive("HUD");
+
+					break;
 
                 case 1:
-                    SceneManager.LoadScene("Desert");
-                    break;
+					await SceneLoader.Instance.LoadSceneAdditive("Desert");
+					await SceneLoader.Instance.LoadSceneAdditive("Audio");
+					await SceneLoader.Instance.LoadSceneAdditive("HUD");
+					break;
 
                 case 2:
-                    SceneManager.LoadScene("Snow");
-                    break;
+					await SceneLoader.Instance.LoadSceneAdditive("Snow");
+					await SceneLoader.Instance.LoadSceneAdditive("Audio");
+					await SceneLoader.Instance.LoadSceneAdditive("HUD");
+					break;
             }
 
 

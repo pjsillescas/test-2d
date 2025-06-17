@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace TopDownRace
 {
@@ -21,15 +20,22 @@ namespace TopDownRace
         {
         }
 
-        public void Restart()
+        public async void Restart()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			await SceneLoader.Instance.UnloadScene(SceneManager.GetActiveScene().name);
+			await SceneLoader.Instance.LoadSceneAdditive(SceneManager.GetActiveScene().name);
+			// SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void Continue()
+        public async void Continue()
         {
-            SceneManager.LoadScene("MainMenu");
-        }
-    }
+            //SceneManager.LoadScene("MainMenu");
+            await SceneLoader.Instance.UnloadScene(SceneManager.GetActiveScene().name);
+			await SceneLoader.Instance.UnloadScene("HUD");
+			await SceneLoader.Instance.UnloadScene("Audio");
+
+			await SceneLoader.Instance.LoadSceneAdditive("MainMenu");
+		}
+	}
 
 }
