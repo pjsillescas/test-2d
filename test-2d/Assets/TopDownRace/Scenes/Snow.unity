@@ -1613,6 +1613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dadfa2134318c34fbbb3561804a31ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VehiclesParent: {fileID: 965001481}
   m_levelRounds: 2
   m_FinishedLaps: 0
   m_PlayerCarPrefab: {fileID: 6258295094829372238, guid: 4441d6191402f15489c7d852adc31f9b, type: 3}
@@ -1623,6 +1624,7 @@ MonoBehaviour:
   m_WonRace: 0
   m_StartTimer: 0
   m_StartRace: 0
+  isStillPlaying: 0
 --- !u!4 &648970866
 Transform:
   m_ObjectHideFlags: 0
@@ -2146,6 +2148,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 312010863054864550, guid: 29a5fc35d22a31c4e85e218bb8efd1f0, type: 3}
   m_PrefabInstance: {fileID: 882218887}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &965001481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965001482}
+  m_Layer: 0
+  m_Name: VehiclesParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965001482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965001481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &970357311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1340772332008051311, guid: add96481182103d4cac11b3b73a803e4, type: 3}
@@ -5144,3 +5177,4 @@ SceneRoots:
   - {fileID: 648970866}
   - {fileID: 2079900645}
   - {fileID: 1092674618}
+  - {fileID: 965001482}

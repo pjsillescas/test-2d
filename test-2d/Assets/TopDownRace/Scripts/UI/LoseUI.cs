@@ -24,21 +24,11 @@ namespace TopDownRace
 
 		public async void BtnRestart()
 		{
-			//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-			await SceneLoader.Instance.UnloadScene(SceneManager.GetActiveScene().name);
-			await SceneLoader.Instance.LoadSceneAdditive(SceneManager.GetActiveScene().name);
-
+			await (Test2dSceneLoader.Instance as Test2dSceneLoader).RestartCurrentLevel();
 		}
 		public async void BtnExit()
 		{
-
-			//SceneManager.LoadScene("MainMenu");
-			await SceneLoader.Instance.UnloadScene(SceneManager.GetActiveScene().name);
-			await SceneLoader.Instance.UnloadScene("HUD");
-			await SceneLoader.Instance.UnloadScene("Audio");
-
-			await SceneLoader.Instance.LoadSceneAdditive("MainMenu");
-
+			await (Test2dSceneLoader.Instance as Test2dSceneLoader).LoadMainMenu();
 		}
 
 	}

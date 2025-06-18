@@ -9,6 +9,8 @@ namespace TopDownRace
 {
 	public class GameControl : MonoBehaviour
 	{
+		[SerializeField]
+		private GameObject VehiclesParent;
 
 		public int m_levelRounds;
 		[HideInInspector]
@@ -55,14 +57,14 @@ namespace TopDownRace
 
 			m_Cars = new GameObject[4];
 
-			GameObject playerCar = Instantiate(m_PlayerCarPrefab);
+			GameObject playerCar = Instantiate(m_PlayerCarPrefab, VehiclesParent.transform);
 			playerCar.transform.position = RaceTrackControl.m_Main.m_StartPositions[0].position;
 			playerCar.transform.rotation = RaceTrackControl.m_Main.m_StartPositions[0].rotation;
 			m_Cars[0] = playerCar;
 
 			for (int i = 1; i < 4; i++)
 			{
-				GameObject rivalCar = Instantiate(m_RivalCarPrefab);
+				GameObject rivalCar = Instantiate(m_RivalCarPrefab, VehiclesParent.transform);
 				rivalCar.transform.position = RaceTrackControl.m_Main.m_StartPositions[i].position;
 				rivalCar.transform.rotation = RaceTrackControl.m_Main.m_StartPositions[i].rotation;
 				m_Cars[i] = rivalCar;
